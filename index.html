@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>웰핏+ CHECK-UP | 나를 위한 프리미엄 AI 건강 케어</title>
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+:root {
+  --bg:#FDFAF6; --white:#FFFFFF;
+  --rose:#C8956C; --rose-dark:#A8784E; --rose-light:#F2E4D8; --rose-ultra:#FBF5F0;
+  --mauve:#8B5E83; --mauve-light:#F2EAF1;
+  --mint:#7DBFA8; --mint-light:#EAF5F1;
+  --charcoal:#2D2D2D; --gray:#6B7280; --gray-light:#E8EAF0; --gray-ultra:#F6F7F9;
+  --gold:#C9A96E;
+  --sans:'Pretendard',sans-serif;
+  --sh-xs:0 2px 8px rgba(45,45,45,.06);
+  --sh-sm:0 4px 16px rgba(45,45,45,.08);
+  --sh-md:0 8px 32px rgba(45,45,45,.10);
+  --sh-lg:0 20px 60px rgba(45,45,45,.12);
+  --r:20px; --r-sm:12px;
+  --ease:cubic-bezier(.4,0,.2,1);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--charcoal);line-height:1.75;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.reveal.visible{opacity:1;transform:none}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}.d5{transition-delay:.5s}
+
+/* HEADER */
+.header{position:sticky;top:0;z-index:900;transition:background .4s var(--ease),box-shadow .4s var(--ease)}
+.header.scrolled{background:rgba(253,250,246,.94);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);box-shadow:0 1px 0 rgba(200,149,108,.2),var(--sh-xs)}
+.header-inner{max-width:1100px;margin:0 auto;padding:16px 32px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.logo{text-decoration:none;display:flex;align-items:center}
+.nav{display:flex;align-items:center;gap:28px}
+.nav a{font-size:.88rem;font-weight:500;color:var(--gray);text-decoration:none;transition:color .25s;white-space:nowrap}
+.nav a:hover{color:var(--rose)}
+.btn-hd{background:linear-gradient(135deg,#C8956C,#D4A87C);color:#fff;border:none;padding:10px 24px;border-radius:50px;font-family:var(--sans);font-size:.88rem;font-weight:600;cursor:pointer;transition:all .3s var(--ease);white-space:nowrap;text-decoration:none;display:inline-flex;align-items:center;gap:6px;box-shadow:0 4px 16px rgba(200,149,108,.3)}
+.btn-hd:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(200,149,108,.4)}
+
+/* BUTTONS */
+.btn-p{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,#C8956C,#D4A87C);color:#fff;border:none;padding:17px 38px;border-radius:50px;font-family:var(--sans);font-size:1rem;font-weight:600;cursor:pointer;text-decoration:none;letter-spacing:-.3px;transition:all .35s var(--ease);box-shadow:0 8px 28px rgba(200,149,108,.28)}
+.btn-p:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(200,149,108,.4)}
+.btn-o{display:inline-flex;align-items:center;gap:10px;background:transparent;color:var(--rose);border:1.5px solid var(--rose);padding:16px 36px;border-radius:50px;font-family:var(--sans);font-size:1rem;font-weight:600;cursor:pointer;text-decoration:none;transition:all .3s var(--ease)}
+.btn-o:hover{background:var(--rose-light);color:var(--rose-dark);border-color:var(--rose-dark)}
+.btn-w{display:inline-flex;align-items:center;gap:10px;background:#fff;color:var(--rose-dark);border:none;padding:17px 38px;border-radius:50px;font-family:var(--sans);font-size:1rem;font-weight:700;cursor:pointer;text-decoration:none;transition:all .35s var(--ease);box-shadow:0 8px 28px rgba(45,45,45,.12)}
+.btn-w:hover{transform:translateY(-3px);box-shadow:0 14px 36px rgba(45,45,45,.18)}
+
+/* SECTION */
+.section{padding:90px 0;position:relative;overflow:hidden}
+.container{max-width:1100px;margin:0 auto;padding:0 32px;position:relative;z-index:1}
+.eyebrow{display:inline-flex;align-items:center;gap:7px;font-size:.8rem;font-weight:700;letter-spacing:1.8px;color:var(--rose-dark);text-transform:uppercase;background:var(--rose-ultra);border:1.5px solid var(--rose);border-radius:8px;padding:6px 16px;margin-bottom:14px}
+.eyebrow.c{display:flex;justify-content:center;margin-left:auto;margin-right:auto;width:fit-content}
+.stitle{font-family:var(--sans);font-size:2.6rem;font-weight:800;color:var(--charcoal);line-height:1.25;letter-spacing:-1px;margin-bottom:16px}
+.stitle.c{text-align:center}
+.slead{font-size:1.05rem;color:var(--gray);line-height:1.85;max-width:560px;margin-bottom:48px}
+.slead.c{text-align:center;margin-left:auto;margin-right:auto}
+.card{background:var(--white);border-radius:var(--r);border:1px solid var(--gray-light);box-shadow:var(--sh-sm);transition:all .35s var(--ease)}
+.card:hover{box-shadow:var(--sh-md);transform:translateY(-3px)}
+
+/* ══ HERO ══ */
+.hero-wrap{padding:72px 0 64px;background:var(--bg);position:relative;overflow:hidden}
+.hero-inner{max-width:1100px;margin:0 auto;padding:0 32px;display:grid;grid-template-columns:1fr 460px;gap:60px;align-items:center;position:relative;z-index:1}
+
+/* 특허 카드 */
+.patent-hero-card{display:flex;align-items:center;gap:14px;background:#fff;border:1.5px solid rgba(200,149,108,.4);border-radius:16px;padding:14px 18px;box-shadow:0 4px 20px rgba(200,149,108,.15);margin-bottom:14px;position:relative;overflow:hidden}
+.patent-hero-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;background:linear-gradient(180deg,#C8956C,#8B5E83);border-radius:4px 0 0 4px}
+.phc-icon{width:42px;height:42px;border-radius:50%;flex-shrink:0;background:linear-gradient(135deg,#FBF3EC,#F5ECF7);display:flex;align-items:center;justify-content:center;border:1.5px solid rgba(200,149,108,.25)}
+.phc-icon i{font-size:1.1rem;color:var(--rose)}
+.phc-body{flex:1;min-width:0}
+.phc-label{font-size:.68rem;font-weight:700;color:var(--rose);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:3px}
+.phc-name{font-size:.85rem;font-weight:700;color:var(--charcoal);line-height:1.4;letter-spacing:-.2px}
+.phc-sub{font-size:.7rem;color:var(--gray);margin-top:3px}
+.phc-stamp{flex-shrink:0;width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#C8956C,#8B5E83);color:#fff;font-size:.58rem;font-weight:800;letter-spacing:.3px;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1.4;text-align:center}
+.hero-meta{display:inline-flex;align-items:center;gap:7px;background:var(--mauve-light);color:var(--mauve);font-size:.8rem;font-weight:500;padding:7px 16px;border-radius:50px;margin-bottom:28px}
+.hero-meta i{font-size:11px}
+
+.hero-h1{font-size:3.4rem;font-weight:900;color:var(--charcoal);line-height:1.2;letter-spacing:-1.2px;margin-bottom:20px}
+.hero-h1 .grad{background:linear-gradient(135deg,#C8956C 0%,#8B5E83 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-size:1.08rem;color:var(--gray);line-height:1.85;margin-bottom:34px;max-width:460px}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:26px}
+.hero-trust{display:flex;align-items:center;gap:6px;font-size:.8rem;color:var(--gray);flex-wrap:wrap}
+.htd{width:4px;height:4px;border-radius:50%;background:var(--rose-light)}
+
+/* 폰 목업 */
+.hero-visual{position:relative;display:flex;justify-content:center;align-items:center}
+.phone-wrap{position:relative;width:260px}
+.deco-c{position:absolute;border-radius:50%;pointer-events:none}
+.deco-c1{width:320px;height:320px;border:1px dashed rgba(200,149,108,.18);top:50%;left:50%;transform:translate(-50%,-50%)}
+.deco-c2{width:200px;height:200px;border:1px solid rgba(139,94,131,.1);top:50%;left:50%;transform:translate(-50%,-50%)}
+.phone-frame{width:260px;height:480px;border-radius:36px;background:linear-gradient(160deg,#FBF4EE,#F2E8F8);border:2px solid rgba(200,149,108,.22);box-shadow:0 30px 80px rgba(139,94,131,.16),0 10px 30px rgba(200,149,108,.13);display:flex;flex-direction:column;align-items:center;overflow:hidden;position:relative}
+.phone-notch{width:80px;height:8px;background:rgba(200,149,108,.25);border-radius:0 0 8px 8px;margin-top:16px;margin-bottom:16px;flex-shrink:0}
+.phone-screen{width:calc(100% - 22px);background:#fff;border-radius:14px;padding:14px;flex:1;margin-bottom:14px;overflow:hidden;box-shadow:inset 0 2px 8px rgba(0,0,0,.04)}
+.ps-title{font-size:.82rem;font-weight:800;color:var(--charcoal);margin-bottom:10px;text-align:center;letter-spacing:-.3px}
+.ps-ages{display:flex;justify-content:space-around;align-items:center;background:var(--rose-ultra);border-radius:9px;padding:9px 6px;margin-bottom:9px}
+.ps-age-item{text-align:center}
+.ps-age-lbl{font-size:.6rem;color:var(--gray);margin-bottom:2px}
+.ps-age-num{font-size:1.4rem;font-weight:900;color:var(--charcoal)}
+.ps-age-num.rose{color:var(--rose)}
+.ps-arrow{color:var(--rose);font-size:.95rem}
+.ps-gauge{margin-bottom:7px}
+.ps-glbl{display:flex;justify-content:space-between;font-size:.6rem;color:var(--gray);margin-bottom:2px}
+.ps-gtrack{height:5px;background:var(--gray-light);border-radius:10px;overflow:hidden}
+.ps-gfill{height:100%;border-radius:10px}
+.gd{background:linear-gradient(90deg,#E8A87C,#C86844)}
+.gw{background:linear-gradient(90deg,#D4956C,#A86830)}
+.gok{background:linear-gradient(90deg,#7DBFA8,#4DA090)}
+.ps-plan{background:var(--mint-light);border-radius:7px;padding:7px 9px;margin-top:7px}
+.ps-plan-t{font-size:.62rem;font-weight:700;color:var(--mint);margin-bottom:3px}
+.ps-plan-i{font-size:.58rem;color:var(--gray);line-height:1.5}
+.hero-float{position:absolute;background:#fff;border-radius:11px;padding:9px 13px;box-shadow:var(--sh-md);border:1px solid var(--gray-light);font-size:.76rem;font-weight:500;color:var(--charcoal);white-space:nowrap}
+.hf1{top:28px;right:-32px}
+.hf2{bottom:100px;left:-42px}
+.hero-float i{color:var(--rose);margin-right:4px}
+.gi{color:#6DBF8A}
+/* 분석 배지 애니메이션 */
+.ai-spinner{width:13px;height:13px;border-radius:50%;border:2px solid var(--rose-light);border-top-color:var(--rose);animation:spin .7s linear infinite;flex-shrink:0;display:inline-block}
+@keyframes spin{to{transform:rotate(360deg)}}
+.badge-pulse{animation:badgePulse .4s var(--ease)}
+@keyframes badgePulse{0%{transform:scale(1)}50%{transform:scale(1.08)}100%{transform:scale(1)}}
+
+/* ══ PAIN POINTS ══ */
+.pain-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:8px}
+.pain-card{padding:28px 22px;border-radius:var(--r);background:var(--white);border:1px solid var(--gray-light);text-align:center;transition:all .35s var(--ease)}
+.pain-card:hover{border-color:var(--rose-light);box-shadow:var(--sh-sm);transform:translateY(-3px)}
+.pain-emoji{font-size:2.4rem;display:block;margin-bottom:12px}
+.pain-card h4{font-size:1rem;font-weight:700;color:var(--charcoal);margin-bottom:8px;line-height:1.4}
+.pain-card p{font-size:.88rem;color:var(--gray);line-height:1.7}
+
+/* ══ HOW IT WORKS ══ */
+.steps-wrap{background:var(--white);border-radius:var(--r);overflow:hidden;border:1px solid var(--gray-light);box-shadow:var(--sh-sm)}
+.steps-grid{display:grid;grid-template-columns:repeat(3,1fr)}
+.step-cell{padding:40px 28px;text-align:center;border-right:1px solid var(--gray-light)}
+.step-cell:last-child{border-right:none}
+.step-num{width:52px;height:52px;border-radius:50%;margin:0 auto 18px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;font-weight:900;background:linear-gradient(135deg,var(--rose-light),var(--mauve-light));color:var(--rose-dark);box-shadow:var(--sh-xs)}
+.step-icon{font-size:1.7rem;color:var(--rose);display:block;margin-bottom:12px}
+.step-cell h4{font-size:1.1rem;font-weight:700;color:var(--charcoal);margin-bottom:9px}
+.step-cell p{font-size:.88rem;color:var(--gray);line-height:1.75}
+.step-time{display:inline-block;margin-top:12px;background:var(--mint-light);color:var(--mint);font-size:.73rem;font-weight:600;padding:4px 12px;border-radius:50px}
+
+/* ══ TECH SECTION ══ */
+.tech-section{background:linear-gradient(160deg,#2D2D2D 0%,#3D2535 100%)}
+.tech-section .eyebrow{color:rgba(200,149,108,.9);background:rgba(200,149,108,.12);border-color:rgba(200,149,108,.4)}
+.tech-section .stitle{color:#fff}
+.tech-section .slead{color:rgba(255,255,255,.6)}
+.tech-flow{display:grid;grid-template-columns:1fr 44px 1fr 44px 1fr;gap:0;align-items:center;margin-bottom:40px}
+.tech-node{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:28px 22px;text-align:center}
+.tech-node-icon{width:52px;height:52px;border-radius:50%;margin:0 auto 14px;display:flex;align-items:center;justify-content:center;font-size:1.3rem}
+.tni-rose{background:rgba(200,149,108,.2);color:#C8956C}
+.tni-mauve{background:rgba(139,94,131,.2);color:#C49ABE}
+.tni-mint{background:rgba(125,191,168,.2);color:#7DBFA8}
+.tech-node h4{font-size:.92rem;font-weight:700;color:#fff;margin-bottom:8px}
+.tech-node p{font-size:.78rem;color:rgba(255,255,255,.55);line-height:1.65}
+.tech-tag{display:inline-block;margin-top:10px;background:rgba(200,149,108,.2);color:#D4A87C;font-size:.68rem;font-weight:700;padding:3px 10px;border-radius:50px;letter-spacing:.5px}
+.tech-arrow{text-align:center;font-size:1.3rem;color:rgba(200,149,108,.5)}
+.tech-outputs{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:0}
+.tech-out-item{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:20px 16px;text-align:center}
+.tech-out-val{font-size:1.5rem;font-weight:900;margin-bottom:4px;background:linear-gradient(135deg,#C8956C,#C49ABE);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.tech-out-unit{font-size:.7rem;color:rgba(255,255,255,.4);margin-bottom:6px}
+.tech-out-name{font-size:.82rem;color:rgba(255,255,255,.75);font-weight:600}
+.tech-patent-bar{display:flex;align-items:flex-start;gap:14px;background:rgba(200,149,108,.1);border:1px solid rgba(200,149,108,.25);border-radius:12px;padding:16px 20px;margin-top:28px}
+.tech-patent-bar i{color:#C8956C;font-size:1.2rem;flex-shrink:0;margin-top:2px}
+.tech-patent-bar p{font-size:.82rem;color:rgba(255,255,255,.65);line-height:1.7}
+.tech-patent-bar strong{color:#D4A87C}
+
+/* ══ REPORT ══ */
+.report-section{background:linear-gradient(160deg,#FBF5F0 0%,#F5EDF8 100%)}
+.report-inner{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.report-checklist{list-style:none}
+.report-checklist li{display:flex;align-items:flex-start;gap:12px;padding:11px 0;border-bottom:1px solid rgba(200,149,108,.12);font-size:.96rem;color:var(--charcoal)}
+.report-checklist li:last-child{border-bottom:none}
+.rcheck{width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,var(--rose),var(--mauve));display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.rcheck i{font-size:10px;color:#fff}
+.report-mockup{background:#fff;border-radius:22px;padding:26px;box-shadow:0 24px 80px rgba(139,94,131,.13),0 8px 24px rgba(200,149,108,.11);border:1px solid rgba(200,149,108,.14)}
+.rm-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+.rm-name{font-size:.92rem;font-weight:700}
+.rm-date{font-size:.72rem;color:var(--gray)}
+.age-row{display:flex;align-items:center;gap:14px;background:var(--rose-ultra);border-radius:12px;padding:14px 18px;margin-bottom:18px}
+.age-col{text-align:center}
+.age-lbl{font-size:.7rem;color:var(--gray);margin-bottom:2px}
+.age-num{font-size:1.7rem;font-weight:900;color:var(--charcoal)}
+.age-num.rose{color:var(--rose)}
+.age-arr{color:var(--rose);font-size:1.3rem;flex-shrink:0}
+.age-badge{margin-left:auto;background:#FEF0E8;color:var(--rose-dark);font-size:.72rem;font-weight:700;padding:5px 12px;border-radius:50px;white-space:nowrap}
+.gauge-b{margin-bottom:11px}
+.gauge-m{display:flex;justify-content:space-between;font-size:.76rem;margin-bottom:4px}
+.gauge-mn{color:var(--charcoal);font-weight:500}
+.gauge-mv{color:var(--gray)}
+.gauge-t{height:8px;background:var(--gray-light);border-radius:10px;overflow:hidden}
+.gfd{height:100%;border-radius:10px;background:linear-gradient(90deg,#E8A87C,#C86844)}
+.gfw{height:100%;border-radius:10px;background:linear-gradient(90deg,#D4956C,#A86830)}
+.rm-cta{text-align:center;margin-top:20px}
+
+/* ══ REVIEWS ══ */
+.reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:8px}
+.review-card{padding:28px;border-radius:var(--r)}
+.rev-stars{margin-bottom:12px}
+.rev-stars i{color:var(--gold);font-size:.88rem}
+.rev-text{font-size:.93rem;color:#3D3D3D;line-height:1.8;margin-bottom:18px;position:relative}
+.rev-text::before{content:'"';font-size:4rem;color:var(--rose-light);position:absolute;top:-18px;left:-8px;line-height:1;z-index:0;font-family:Georgia,serif}
+.rev-text span{position:relative;z-index:1}
+.rev-author{display:flex;align-items:center;gap:11px}
+.rev-av{width:40px;height:40px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:.88rem;font-weight:700}
+.av-r{background:var(--rose-light);color:var(--rose-dark)}
+.av-m{background:var(--mauve-light);color:var(--mauve)}
+.av-g{background:var(--mint-light);color:var(--mint)}
+.rev-name{font-size:.86rem;font-weight:600;color:var(--charcoal)}
+.rev-meta{font-size:.76rem;color:var(--gray)}
+
+/* ══ PRICE COMPARE ══ */
+.price-section{background:var(--bg)}
+.price-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:8px}
+.price-card{border-radius:var(--r);padding:32px 28px}
+.pc-hospital{background:#fff;border:1px solid var(--gray-light)}
+.pc-wellfit{background:linear-gradient(145deg,#C8956C,#8B5E83);position:relative;overflow:hidden}
+.pc-wellfit::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 80% 20%,rgba(255,255,255,.08) 0%,transparent 60%)}
+.pc-label{font-size:.73rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:14px}
+.pc-hospital .pc-label{color:var(--gray)}
+.pc-wellfit .pc-label{color:rgba(255,255,255,.7)}
+.pc-title{font-size:1.05rem;font-weight:700;margin-bottom:18px}
+.pc-hospital .pc-title{color:var(--charcoal)}
+.pc-wellfit .pc-title{color:#fff}
+.pi{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--gray-light);font-size:.87rem}
+.pi:last-of-type{border-bottom:none}
+.pi .pn{color:var(--gray);text-align:left}
+.pi .pv{font-weight:700;color:var(--charcoal)}
+.ptotal{margin-top:14px;padding-top:14px;border-top:2px solid var(--gray-light);display:flex;justify-content:space-between;align-items:center}
+.ptotal .tl{font-size:.86rem;color:var(--gray)}
+.ptotal .ta{font-size:1.5rem;font-weight:900;color:var(--charcoal)}
+.pnote{font-size:.7rem;color:var(--gray);margin-top:5px}
+/* 웰핏 카드 내부 */
+.wf-inner{position:relative;z-index:1}
+.wf-badge{display:inline-block;background:rgba(255,255,255,.2);color:#fff;font-size:.76rem;font-weight:700;padding:5px 14px;border-radius:50px;margin-bottom:14px}
+.wf-price{font-size:3rem;font-weight:900;color:#fff;line-height:1;margin:10px 0 4px}
+.wf-price-sub{font-size:.86rem;color:rgba(255,255,255,.7);margin-bottom:18px}
+.wf-list{list-style:none;margin-bottom:20px}
+.wf-list li{display:flex;align-items:flex-start;gap:9px;font-size:.87rem;color:rgba(255,255,255,.85);padding:6px 0;border-bottom:1px solid rgba(255,255,255,.1)}
+.wf-list li:last-child{border-bottom:none}
+.wf-list li i{color:rgba(255,255,255,.6);margin-top:2px;flex-shrink:0}
+.price-verdict{margin-top:28px;background:#fff;border-radius:var(--r);padding:26px 30px;border:1px solid var(--gray-light);display:flex;align-items:center;gap:22px;flex-wrap:wrap}
+.price-verdict i{font-size:1.8rem;color:var(--rose);flex-shrink:0}
+.pv-text h4{font-size:1.02rem;font-weight:700;color:var(--charcoal);margin-bottom:6px}
+.pv-text p{font-size:.88rem;color:var(--gray);line-height:1.75}
+.pv-text strong{color:var(--rose-dark)}
+
+/* ══ REVENUE ══ */
+
+.rev-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:8px}
+.rev-card{padding:30px;border-radius:var(--r)}
+.rev-card h4{font-size:1.05rem;font-weight:700;margin-bottom:18px;color:var(--charcoal)}
+.rev-table{width:100%;border-collapse:collapse}
+.rev-table th{font-size:.76rem;font-weight:600;color:var(--gray);text-align:left;padding:7px 10px;border-bottom:1px solid var(--gray-light);letter-spacing:.5px;text-transform:uppercase}
+.rev-table td{padding:11px 10px;border-bottom:1px solid var(--gray-light);font-size:.88rem}
+.rev-table td:last-child{font-weight:700;color:var(--rose-dark);text-align:right}
+.rev-table tr:last-child td{border-bottom:none}
+.calc-row{margin-bottom:16px}
+.calc-row label{display:flex;justify-content:space-between;align-items:center;font-size:.86rem;color:var(--gray);margin-bottom:7px}
+.calc-row label span{font-weight:700;color:var(--charcoal)}
+.calc-row input[type=range]{width:100%;accent-color:var(--rose);cursor:pointer}
+.calc-result{background:linear-gradient(135deg,var(--rose-ultra),var(--mauve-light));border-radius:14px;padding:18px;text-align:center;margin-top:18px;border:1px solid rgba(200,149,108,.2)}
+.cr-label{font-size:.8rem;color:var(--gray);margin-bottom:5px}
+.cr-num{font-size:2.1rem;font-weight:900;color:var(--rose-dark)}
+.cr-note{font-size:.7rem;color:var(--gray);margin-top:5px}
+
+/* ══ COMPARE TABLE ══ */
+.cmp-wrap{overflow-x:auto}
+.cmp-table{width:100%;border-collapse:collapse}
+.cmp-table th{padding:15px 18px;font-size:.92rem;font-weight:700;border-bottom:2px solid var(--gray-light);text-align:left}
+.cmp-table th.col-ai{background:linear-gradient(135deg,var(--rose-ultra),var(--mauve-light));color:var(--rose-dark);border-radius:12px 12px 0 0}
+.cmp-table td{padding:13px 18px;border-bottom:1px solid var(--gray-light);font-size:.9rem}
+.cmp-table td.col-ai{background:rgba(251,245,240,.5);font-weight:600}
+.cmp-table td.col-old{color:#bbb}
+.chk{color:#6DBF8A;margin-right:5px}
+.crs{color:#ddd;margin-right:5px}
+
+/* ══ TRUST ══ */
+.trust-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:8px}
+.trust-card{background:#fff;border-radius:var(--r);padding:26px;border:1px solid var(--gray-light);display:flex;gap:16px;align-items:flex-start;transition:all .35s var(--ease)}
+.trust-card:hover{box-shadow:var(--sh-md);transform:translateY(-2px)}
+.trust-card.patent-card{grid-column:1/-1;background:linear-gradient(135deg,#FBF3EC,#F5ECF7);border:1.5px solid rgba(200,149,108,.32)}
+.tib{width:46px;height:46px;border-radius:11px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1.2rem}
+.tib-rose{background:var(--rose-light);color:var(--rose-dark)}
+.tib-mauve{background:var(--mauve-light);color:var(--mauve)}
+.tib-mint{background:var(--mint-light);color:var(--mint)}
+.tib-gray{background:var(--gray-ultra);color:var(--gray)}
+.trust-body h4{font-size:.95rem;font-weight:700;color:var(--charcoal);margin-bottom:6px}
+.trust-body p{font-size:.84rem;color:var(--gray);line-height:1.75}
+.patent-name-pill{display:inline-block;margin-top:9px;background:rgba(200,149,108,.14);color:var(--rose-dark);font-size:.77rem;font-weight:600;padding:4px 13px;border-radius:50px}
+.patent-pending{display:inline-flex;align-items:center;gap:5px;margin-top:7px;background:var(--rose);color:#fff;font-size:.7rem;font-weight:700;padding:4px 11px;border-radius:50px}
+.patent-pending i{font-size:9px}
+
+/* ══ FAQ ══ */
+.faq-item{border-bottom:1px solid var(--gray-light);overflow:hidden}
+.faq-q{width:100%;background:none;border:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;padding:20px 4px;text-align:left;gap:14px;font-family:var(--sans);font-size:.98rem;font-weight:600;color:var(--charcoal);transition:color .25s}
+.faq-q:hover{color:var(--rose)}
+.faq-q i{font-size:.95rem;color:var(--rose);flex-shrink:0;transition:transform .35s var(--ease)}
+.faq-q.open i{transform:rotate(180deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .4s var(--ease)}
+.faq-a.open{max-height:300px}
+.faq-a-inner{padding:0 4px 18px;font-size:.92rem;color:var(--gray);line-height:1.8}
+
+/* ══ CTA ══ */
+.cta-section{background:linear-gradient(145deg,#C8956C 0%,#A8758A 50%,#8B5E83 100%);padding:90px 32px;text-align:center;position:relative;overflow:hidden}
+.cta-deco{position:absolute;border-radius:50%;border:1px solid rgba(255,255,255,.1);pointer-events:none}
+.cd1{width:500px;height:500px;top:-200px;right:-200px}
+.cd2{width:300px;height:300px;bottom:-100px;left:-100px}
+.cta-inner{position:relative;z-index:1;max-width:560px;margin:0 auto}
+.cta-eyebrow{display:inline-block;background:rgba(255,255,255,.18);color:#fff;font-size:.76rem;letter-spacing:2px;font-weight:500;padding:6px 16px;border-radius:50px;margin-bottom:22px;text-transform:uppercase}
+.cta-section .stitle{color:#fff;margin-bottom:12px}
+.cta-section .slead{color:rgba(255,255,255,.8);margin-bottom:32px;max-width:420px}
+.cta-tags{display:flex;gap:9px;justify-content:center;flex-wrap:wrap;margin-top:22px}
+.cta-tag{background:rgba(255,255,255,.15);color:rgba(255,255,255,.9);font-size:.78rem;padding:5px 13px;border-radius:50px}
+
+/* ══ MODAL ══ */
+.modal-ov{position:fixed;inset:0;background:rgba(45,45,45,.6);backdrop-filter:blur(8px);display:none;justify-content:center;align-items:center;z-index:9000;padding:20px}
+.modal-ov.open{display:flex}
+.modal-box{background:#fff;border-radius:22px;max-width:660px;width:100%;max-height:90vh;overflow-y:auto;position:relative;box-shadow:0 40px 120px rgba(45,45,45,.22);padding:34px}
+.modal-close{position:absolute;top:16px;right:16px;background:var(--gray-light);border:none;border-radius:50%;width:34px;height:34px;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--gray);transition:all .25s;font-size:.95rem}
+.modal-close:hover{background:var(--rose-light);color:var(--rose-dark)}
+.modal-title{font-size:1.4rem;font-weight:800;margin-bottom:5px}
+.modal-sub{font-size:.86rem;color:var(--gray);margin-bottom:22px}
+.modal-age-row{display:flex;align-items:center;gap:18px;flex-wrap:wrap;background:var(--rose-ultra);border-radius:12px;padding:16px 20px;margin-bottom:22px}
+.ma-item{text-align:center}
+.ma-lbl{font-size:.72rem;color:var(--gray);margin-bottom:2px}
+.ma-num{font-size:1.9rem;font-weight:900}
+.ma-num.rose{color:var(--rose)}
+.ma-arr{color:var(--rose);font-size:1.5rem}
+.ma-badge{margin-left:auto;background:#FEF0E8;color:var(--rose-dark);font-weight:700;padding:7px 14px;border-radius:50px;font-size:.8rem}
+.modal-st{font-size:.96rem;font-weight:700;margin:18px 0 11px;color:var(--charcoal)}
+.modal-gauge{margin-bottom:11px}
+.mg-meta{display:flex;justify-content:space-between;font-size:.8rem;margin-bottom:5px}
+.mg-name{color:var(--charcoal);font-weight:500}
+.mg-val{color:var(--gray)}
+.mg-track{height:9px;background:var(--gray-light);border-radius:10px;overflow:hidden}
+.modal-day{background:var(--rose-ultra);border-radius:11px;padding:13px 16px;margin-bottom:9px;border-left:3px solid var(--rose)}
+.modal-day strong{color:var(--rose-dark);font-size:.86rem}
+.modal-day p{font-size:.86rem;color:var(--gray);margin-top:4px}
+.modal-footnote{font-size:.8rem;color:var(--gray);margin-top:16px;text-align:center}
+
+/* ══ FOOTER ══ */
+.footer{background:#2D2D2D;padding:48px 32px 34px;color:rgba(255,255,255,.45);text-align:center}
+.footer-logo{font-size:1.1rem;font-weight:700;color:rgba(255,255,255,.7);margin-bottom:12px;display:block}
+.footer p{font-size:.78rem;line-height:1.85;max-width:580px;margin:0 auto}
+
+/* ══ RESPONSIVE ══ */
+@media(max-width:960px){
+  .hero-inner{grid-template-columns:1fr;text-align:center;gap:36px}
+  .hero-h1{font-size:2.6rem}
+  .hero-sub{max-width:100%;margin-left:auto;margin-right:auto}
+  .hero-btns{justify-content:center}
+  .hero-trust{justify-content:center}
+  .hero-visual{order:-1}
+  .hf1,.hf2{display:none}
+  .report-inner{grid-template-columns:1fr}
+  .rev-grid{grid-template-columns:1fr}
+  .price-grid{grid-template-columns:1fr}
+  .trust-grid{grid-template-columns:1fr}
+  .trust-card.patent-card{grid-column:auto}
+  .tech-flow{grid-template-columns:1fr;gap:8px}
+  .tech-arrow{transform:rotate(90deg)}
+  .tech-outputs{grid-template-columns:1fr 1fr}
+  .stitle{font-size:2rem}
+}
+@media(max-width:680px){
+  .pain-grid{grid-template-columns:1fr 1fr}
+  .reviews-grid{grid-template-columns:1fr}
+  .steps-grid{grid-template-columns:1fr}
+  .step-cell{border-right:none;border-bottom:1px solid var(--gray-light)}
+  .step-cell:last-child{border-bottom:none}
+  .hero-h1{font-size:2.1rem}
+  .nav{display:none}
+  .section{padding:60px 0}
+  .container{padding:0 20px}
+}
+@media(max-width:420px){
+  .pain-grid{grid-template-columns:1fr}
+}
+/* ── 수익 시나리오 모달 ── */
+.income-modal-box{max-width:740px}
+.income-tabs{display:flex;gap:8px;margin-bottom:22px;background:var(--gray-ultra);border-radius:12px;padding:5px}
+.itab{flex:1;background:none;border:none;padding:9px 12px;border-radius:9px;font-family:var(--sans);font-size:.84rem;font-weight:600;color:var(--gray);cursor:pointer;transition:all .25s}
+.itab.active{background:#fff;color:var(--rose-dark);box-shadow:var(--sh-xs)}
+.scenario-table{width:100%;border-collapse:collapse;margin-bottom:6px}
+.scenario-table th{font-size:.75rem;font-weight:700;color:var(--gray);text-align:left;padding:9px 12px;border-bottom:2px solid var(--gray-light);letter-spacing:.5px;text-transform:uppercase;white-space:nowrap}
+.scenario-table th.col-total{color:var(--rose-dark);background:var(--rose-ultra);border-radius:6px 6px 0 0}
+.scenario-table td{padding:13px 12px;border-bottom:1px solid var(--gray-light);font-size:.88rem;vertical-align:middle}
+.scenario-table td.col-total{font-weight:800;color:var(--rose-dark);background:rgba(251,245,240,.5);font-size:.95rem}
+.scenario-table tr:last-child td{border-bottom:none}
+.goal-badge{display:inline-block;font-size:.72rem;font-weight:700;padding:3px 10px;border-radius:50px}
+.gb-coffee{background:#FFF3E0;color:#E65100}
+.gb-free{background:#E8F5E9;color:#2E7D32}
+.gb-pocket{background:#E3F2FD;color:#1565C0}
+.gb-side{background:var(--mauve-light);color:var(--mauve)}
+.gb-part{background:var(--rose-light);color:var(--rose-dark)}
+.income-note{font-size:.76rem;color:var(--gray);margin-top:12px;padding:12px 14px;background:var(--gray-ultra);border-radius:9px;line-height:1.7}
+.income-note strong{color:var(--rose-dark)}
+.rev-points{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:32px}
+.rev-point{background:#fff;border-radius:var(--r-sm);padding:22px 18px;text-align:center;border:1px solid var(--gray-light);transition:all .35s var(--ease)}
+.rev-point:hover{border-color:var(--rose-light);box-shadow:var(--sh-sm);transform:translateY(-2px)}
+.rev-point i{font-size:1.6rem;color:var(--rose);display:block;margin-bottom:10px}
+.rp-title{font-size:.95rem;font-weight:700;color:var(--charcoal);margin-bottom:5px}
+.rp-sub{font-size:.78rem;color:var(--gray);line-height:1.6}
+@media(max-width:680px){.rev-points{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header" id="hdr">
+  <div class="header-inner">
+    <a href="#" class="logo">
+      <svg width="152" height="36" viewBox="0 0 152 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="18" cy="18" r="18" fill="url(#lg1)"/>
+        <rect x="11" y="15.5" width="14" height="5" rx="2.5" fill="white"/>
+        <rect x="15.5" y="11" width="5" height="14" rx="2.5" fill="white"/>
+        <text x="44" y="24" font-family="Pretendard,sans-serif" font-size="18" font-weight="700" fill="#2D2D2D" letter-spacing="-0.5">웰핏</text>
+        <text x="83" y="23" font-family="Pretendard,sans-serif" font-size="22" font-weight="800" fill="#C8956C">+</text>
+        <rect x="99" y="7" width="1" height="22" rx="0.5" fill="#DDD5CC"/>
+        <text x="107" y="19" font-family="Pretendard,sans-serif" font-size="8.5" font-weight="600" fill="#6B7280" letter-spacing="1.8">CHECK</text>
+        <text x="107" y="30" font-family="Pretendard,sans-serif" font-size="8.5" font-weight="700" fill="#C8956C" letter-spacing="2">-UP</text>
+        <defs>
+          <linearGradient id="lg1" x1="0" y1="0" x2="36" y2="36" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#C8956C"/><stop offset="100%" stop-color="#8B5E83"/>
+          </linearGradient>
+        </defs>
+      </svg>
+    </a>
+    <nav class="nav">
+      <a href="#how-it-works">진단 방법</a>
+      <a href="#tech">기술 원리</a>
+      <a href="#price">가격 비교</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <div style="display:flex;align-items:center;gap:10px;">
+      <a href="wellfit_ambassador.html" class="btn-hd" style="background:transparent;color:var(--mauve);border:1.5px solid var(--mauve);box-shadow:none;"><i class="fas fa-star"></i> 웰핏 앰배서더</a>
+      <a href="#cta" class="btn-hd"><i class="fas fa-gift"></i> 무료 체험</a>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero-wrap">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <!-- 특허 카드 -->
+      <div class="patent-hero-card reveal">
+        <div class="phc-icon"><i class="fas fa-award"></i></div>
+        <div class="phc-body">
+          <div class="phc-label">대한민국 특허 출원 완료</div>
+          <div class="phc-name">비침습적 바이오마커 추정을 통한<br>건강 상태 평가 장치 및 방법</div>
+          <div class="phc-sub">출원증명서 발급 예정 · 출원인: 김성훈</div>
+        </div>
+        <div class="phc-stamp">KR<br>특허</div>
+      </div>
+      <div class="hero-meta reveal d1">
+        <i class="fas fa-star"></i> 얼리어답터 모집 중
+      </div>
+      <h1 class="hero-h1 reveal d1">
+        내 몸이 보내는<br><span class="grad">신호를 읽어드립니다</span>
+      </h1>
+      <p class="hero-sub reveal d2">
+        셀카 한 장으로 호르몬 불균형, 영양 결핍 위험, 갱년기 징후까지<br>
+        AI가 예측하고 15페이지 맞춤 건강 리포트를 드립니다.
+      </p>
+      <div class="hero-btns reveal d3">
+        <a href="#cta" class="btn-p"><i class="fas fa-gift"></i> 14일 무료 체험하기</a>
+        <button class="btn-o" onclick="openModal()"><i class="fas fa-file-medical-alt"></i> 리포트 샘플 보기</button>
+      </div>
+      <div class="hero-trust reveal d4">
+        <i class="fas fa-shield-alt" style="color:var(--rose);font-size:11px;"></i>
+        신용카드 불필요 <span class="htd"></span>
+        언제든 해지 가능 <span class="htd"></span>
+        임상 연구 데이터 기반 <span class="htd"></span>
+        데이터 즉시 삭제
+      </div>
+    </div>
+    <div class="hero-visual reveal d2">
+      <div class="phone-wrap">
+        <div class="deco-c deco-c1"></div>
+        <div class="deco-c deco-c2"></div>
+        <div class="phone-frame">
+          <div class="phone-notch"></div>
+          <div class="phone-screen">
+            <div class="ps-title">웰핏+ 리포트</div>
+            <div class="ps-ages">
+              <div class="ps-age-item"><div class="ps-age-lbl">실제 나이</div><div class="ps-age-num">48세</div></div>
+              <div class="ps-arrow">→</div>
+              <div class="ps-age-item"><div class="ps-age-lbl">건강 나이</div><div class="ps-age-num rose">43세</div></div>
+            </div>
+            <div class="ps-gauge"><div class="ps-glbl"><span>코르티솔</span><span>높음</span></div><div class="ps-gtrack"><div class="ps-gfill gd" style="width:85%"></div></div></div>
+            <div class="ps-gauge"><div class="ps-glbl"><span>에스트로겐</span><span>낮음</span></div><div class="ps-gtrack"><div class="ps-gfill gw" style="width:30%"></div></div></div>
+            <div class="ps-gauge"><div class="ps-glbl"><span>비타민D 결핍</span><span>82%</span></div><div class="ps-gtrack"><div class="ps-gfill gd" style="width:82%"></div></div></div>
+            <div class="ps-plan"><div class="ps-plan-t">📋 14일 맞춤 가이드</div><div class="ps-plan-i">Day 1 · 유산균 + 콜라겐 앰플</div><div class="ps-plan-i">Day 7 · 비타민D 2000IU 추가</div></div>
+          </div>
+        </div>
+        <div class="hero-float hf1" id="analysisBadge">
+          <span id="badge-analyzing" style="display:flex;align-items:center;gap:5px;">
+            <span class="ai-spinner"></span> AI 분석 중...
+          </span>
+          <span id="badge-done" style="display:none;align-items:center;gap:5px;">
+            <i class="fas fa-check-circle gi"></i> 분석 완료
+          </span>
+        </div>
+        <div class="hero-float hf2"><i class="fas fa-clock"></i> 10분이면 충분해요</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PAIN POINTS -->
+<section class="section" style="background:var(--white);">
+  <div class="container">
+    <div class="eyebrow reveal"><i class="fas fa-heart" style="font-size:11px;"></i>공감하시나요?</div>
+    <h2 class="stitle reveal d1">혹시 이런 경험,<br>있으신가요?</h2>
+    <p class="slead reveal d2">30~60대 여성이라면 누구나 느끼는 변화들.<br>혼자 고민하지 마세요 — AI가 원인을 찾아드립니다.</p>
+    <div class="pain-grid">
+      <div class="pain-card reveal d1"><span class="pain-emoji">😴</span><h4>아무리 자도 피곤해요</h4><p>밤에 잠은 잤는데 아침이면 무거운 몸. 호르몬 불균형이 원인일 수 있어요.</p></div>
+      <div class="pain-card reveal d2"><span class="pain-emoji">🪞</span><h4>얼굴이 갑자기 칙칙해졌어요</h4><p>피부 탄력이 줄고 칙칙해졌어요. 에스트로겐 변화와 깊이 연결돼 있어요.</p></div>
+      <div class="pain-card reveal d3"><span class="pain-emoji">⚖️</span><h4>예전 방식으로는 살이 안 빠져요</h4><p>운동도 식단도 관리하는데 왜 안 빠질까요. 대사 저하 원인을 분석해드려요.</p></div>
+      <div class="pain-card reveal d1"><span class="pain-emoji">🌡️</span><h4>얼굴이 달아오를 때가 있어요</h4><p>갑자기 확 뜨거워지고 감정 기복도 심해졌어요. 갱년기 징후 여부를 확인해드려요.</p></div>
+      <div class="pain-card reveal d2"><span class="pain-emoji">💊</span><h4>영양제, 뭘 먹어야 할지 모르겠어요</h4><p>내 몸에 맞는지 모르겠어요. 결핍 지표를 정확히 분석해드려요.</p></div>
+      <div class="pain-card reveal d3"><span class="pain-emoji">😔</span><h4>검진은 정상인데 몸은 이상해요</h4><p>"정상 범위"라는 말만 들었는데 몸 상태는 왜 이럴까요. 미세한 불균형을 찾아드려요.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section" id="how-it-works" style="background:var(--bg);">
+  <div class="container">
+    <div class="eyebrow c reveal"><i class="fas fa-route" style="font-size:11px;"></i>진단 프로세스</div>
+    <h2 class="stitle c reveal d1">단 10분이면 충분해요</h2>
+    <p class="slead c reveal d2">스마트폰 하나로, 복잡한 검사 없이 집에서 편안하게.</p>
+    <div class="steps-wrap reveal d3">
+      <div class="steps-grid" style="grid-template-columns:repeat(4,1fr);">
+        <div class="step-cell">
+          <div class="step-num">1</div>
+          <span class="step-icon"><i class="fas fa-camera"></i></span>
+          <h4>셀카 촬영</h4>
+          <p>얼굴 정면·측면, 손톱 사진을 찍어주세요. AI가 468개 얼굴 랜드마크와 손톱 세로줄을 정밀 분석합니다.</p>
+          <span class="step-time">약 2분</span>
+        </div>
+        <div class="step-cell">
+          <div class="step-num">2</div>
+          <span class="step-icon"><i class="fas fa-clipboard-list"></i></span>
+          <h4>18문항 설문</h4>
+          <p>수면, 식습관, 스트레스, 갱년기 증상 등 간단한 질문에 답해주세요. 음성으로도 편하게 답변할 수 있어요.</p>
+          <span class="step-time">약 5~8분</span>
+        </div>
+        <div class="step-cell">
+          <div class="step-num">3</div>
+          <span class="step-icon"><i class="fas fa-file-medical"></i></span>
+          <h4>AI 리포트 수령</h4>
+          <p>코르티솔·에스트로겐·영양 결핍 위험도와 AI 통합 건강 나이를 담은 15페이지 맞춤 PDF 리포트를 즉시 받으세요.</p>
+          <span class="step-time">즉시 생성</span>
+        </div>
+        <div class="step-cell" style="background:linear-gradient(160deg,#FBF5F0,#F5EDF8);border-radius:0 var(--r) var(--r) 0;">
+          <div class="step-num" style="background:linear-gradient(135deg,var(--rose),var(--mauve));color:#fff;">7</div>
+          <span class="step-icon"><i class="fas fa-chart-line" style="color:var(--mauve);"></i></span>
+          <h4>Day 7 중간 점검</h4>
+          <p>7일 후 자동으로 중간 점검 리포트가 발송돼요. 변화 추이를 시각화해 드리고 2주차 플랜을 조정해드립니다.</p>
+          <span class="step-time" style="background:var(--mauve-light);color:var(--mauve);">자동 발송</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TECH PRINCIPLE -->
+<section class="section tech-section" id="tech">
+  <div class="container">
+    <div class="eyebrow reveal"><i class="fas fa-flask" style="font-size:11px;"></i>특허 기술 원리</div>
+    <h2 class="stitle reveal d1">AI가 정확히<br>무엇을 보는 걸까요?</h2>
+    <p class="slead reveal d2">혈액 채취 없이 혈액검사 수준의 수치를 — 3가지 데이터의 AI 융합 분석</p>
+    <div class="tech-flow reveal d2">
+      <div class="tech-node">
+        <div class="tech-node-icon tni-rose"><i class="fas fa-camera"></i></div>
+        <h4>얼굴 + 손톱 이미지</h4>
+        <p>468개 랜드마크 추출<br>손톱 세로줄 지수 산출<br>CNN 기반 특징 벡터화</p>
+        <span class="tech-tag">이미지 분석</span>
+      </div>
+      <div class="tech-arrow"><i class="fas fa-plus"></i></div>
+      <div class="tech-node">
+        <div class="tech-node-icon tni-mauve"><i class="fas fa-clipboard-list"></i></div>
+        <h4>18문항 설문 데이터</h4>
+        <p>스트레스·수면·식습관<br>갱년기 증상 등 수치화<br>멀티모달 융합 레이어</p>
+        <span class="tech-tag">설문 분석</span>
+      </div>
+      <div class="tech-arrow"><i class="fas fa-arrow-right"></i></div>
+      <div class="tech-node">
+        <div class="tech-node-icon tni-mint"><i class="fas fa-brain"></i></div>
+        <h4>어텐션 AI 모델</h4>
+        <p>두 데이터를 동적 가중치로<br>융합 — 단일 모달 대비<br>정확도 현저히 향상</p>
+        <span class="tech-tag">특허 기술</span>
+      </div>
+    </div>
+    <div class="tech-outputs reveal d3">
+      <div class="tech-out-item">
+        <div class="tech-out-val">μg/dL</div>
+        <div class="tech-out-unit">기준 단위 예측</div>
+        <div class="tech-out-name">코르티솔 과다 위험</div>
+      </div>
+      <div class="tech-out-item">
+        <div class="tech-out-val">pg/mL</div>
+        <div class="tech-out-unit">기준 단위 예측</div>
+        <div class="tech-out-name">에스트로겐 저하 위험</div>
+      </div>
+      <div class="tech-out-item">
+        <div class="tech-out-val">0~100%</div>
+        <div class="tech-out-unit">위험도로 산출</div>
+        <div class="tech-out-name">영양 결핍 지표</div>
+      </div>
+    </div>
+    <div class="tech-patent-bar reveal d4">
+      <i class="fas fa-award"></i>
+      <p><strong>특허 출원 완료</strong> — 얼굴·손톱 이미지와 설문 데이터를 동시에 AI로 융합 분석하는 방식은 기존에 없던 새로운 기술입니다. 단일 이미지나 설문에만 의존하던 종래 기술의 한계를 극복했습니다.</p>
+    </div>
+  </div>
+</section>
+
+<!-- REPORT PREVIEW -->
+<section class="section report-section" id="report">
+  <div class="container">
+    <div class="report-inner">
+      <div>
+        <div class="eyebrow reveal"><i class="fas fa-file-medical" style="font-size:11px;"></i>리포트 내용</div>
+        <h2 class="stitle reveal d1">당신만을 위한<br>15페이지 건강 리포트</h2>
+        <p class="slead reveal d2" style="margin-bottom:26px;">단순한 수치가 아니라, 내 몸에 무슨 일이 일어나고 있는지<br>이해할 수 있는 언어로 전달해 드립니다.</p>
+        <ul class="report-checklist reveal d3">
+          <li><div class="rcheck"><i class="fas fa-check"></i></div><span>AI 통합 건강 나이 — 실제 나이와 건강 나이 비교</span></li>
+          <li><div class="rcheck"><i class="fas fa-check"></i></div><span>호르몬 불균형 위험도 — 코르티솔 과다 / 에스트로겐 저하</span></li>
+          <li><div class="rcheck"><i class="fas fa-check"></i></div><span>영양 결핍 위험도 — 비타민D, 철분, 아연</span></li>
+          <li><div class="rcheck"><i class="fas fa-check"></i></div><span>갱년기 단계 분석 및 맞춤 대응 전략</span></li>
+          <li><div class="rcheck"><i class="fas fa-check"></i></div><span>14일 맞춤형 식단 · 영양제 · 운동 플랜</span></li>
+          <li><div class="rcheck"><i class="fas fa-check"></i></div><span>개인 맞춤 건강기능식품 추천 (선택 구매)</span></li>
+        </ul>
+      </div>
+      <div class="reveal d2">
+        <div class="report-mockup">
+          <div class="rm-header"><span class="rm-name">이지은 님 · 48세</span><span class="rm-date" id="previewDate"></span></div>
+          <div class="age-row">
+            <div class="age-col"><div class="age-lbl">실제 나이</div><div class="age-num">48세</div></div>
+            <div class="age-arr"><i class="fas fa-arrow-right"></i></div>
+            <div class="age-col"><div class="age-lbl">AI 건강 나이</div><div class="age-num" style="color:var(--mint);">43세</div></div>
+            <div class="age-badge" style="background:var(--mint-light);color:#2E7D32;">✅ -5세 개선</div>
+          </div>
+          <div class="gauge-b"><div class="gauge-m"><span class="gauge-mn">코르티솔</span><span class="gauge-mv">23.4 μg/dL (정상 5~20)</span></div><div class="gauge-t"><div class="gfd" style="width:85%"></div></div></div>
+          <div class="gauge-b"><div class="gauge-m"><span class="gauge-mn">에스트로겐</span><span class="gauge-mv">32 pg/mL (정상 40~100)</span></div><div class="gauge-t"><div class="gfw" style="width:30%"></div></div></div>
+          <div class="gauge-b"><div class="gauge-m"><span class="gauge-mn">비타민D 결핍 위험</span><span class="gauge-mv">82%</span></div><div class="gauge-t"><div class="gfd" style="width:82%"></div></div></div>
+          <div class="gauge-b"><div class="gauge-m"><span class="gauge-mn">철분 결핍 위험</span><span class="gauge-mv">47%</span></div><div class="gauge-t"><div class="gfw" style="width:47%"></div></div></div>
+          <div class="rm-cta"><button class="btn-o" onclick="openModal()" style="font-size:.86rem;padding:11px 22px;"><i class="fas fa-search"></i> 전체 리포트 샘플 보기</button></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="section" style="background:var(--white);">
+  <div class="container">
+    <div class="eyebrow c reveal"><i class="fas fa-star" style="font-size:11px;"></i>사용자 후기</div>
+    <h2 class="stitle c reveal d1">먼저 경험한 분들의 이야기</h2>
+    <p class="slead c reveal d2">얼리어답터로 먼저 경험한 분들의 진심 어린 후기</p>
+    <div class="reviews-grid">
+      <div class="card reveal d1" style="padding:28px;">
+        <div class="rev-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        <p class="rev-text"><span>갱년기 초입인지도 몰랐는데 리포트 보고 에스트로겐 수치가 낮다는 걸 알았어요. 병원 가기 전에 이런 자료가 있으니 의사 선생님과 훨씬 구체적으로 얘기할 수 있었어요.</span></p>
+        <div class="rev-author"><div class="rev-av av-r">김</div><div><div class="rev-name">김○○ 님</div><div class="rev-meta">52세 · 주부</div></div></div>
+      </div>
+      <div class="card reveal d2" style="padding:28px;">
+        <div class="rev-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        <p class="rev-text"><span>만성 피로 원인이 코르티솔 과다였다니 몰랐어요. 14일 플랜대로 복식호흡이랑 마그네슘 챙겼더니 2주 후에 확연히 달라졌어요.</span></p>
+        <div class="rev-author"><div class="rev-av av-m">이</div><div><div class="rev-name">이○○ 님</div><div class="rev-meta">38세 · 직장인</div></div></div>
+      </div>
+      <div class="card reveal d3" style="padding:28px;">
+        <div class="rev-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        <p class="rev-text"><span>건강 관리하면서 소소하게 수익도 생겼어요. 친구들한테 자연스럽게 소개했는데 웰핏 앰배서더 프로그램 덕분에 구독료가 0원이 됐어요. 재고도 없고 초기 비용도 없어서 부담이 전혀 없었어요.</span></p>
+        <div class="rev-author"><div class="rev-av av-g">박</div><div><div class="rev-name">박○○ 님</div><div class="rev-meta">45세 · 프리랜서</div></div></div>
+      </div>
+    </div>
+    <!-- 앰배서더 소프트 링크 -->
+    <div class="reveal d3" style="text-align:center;margin-top:32px;padding:20px;background:var(--mauve-light);border-radius:var(--r-sm);">
+      <span style="font-size:.9rem;color:var(--mauve);font-weight:500;">건강을 챙기면서 소소한 수익도 생겼어요 —</span>
+      <a href="wellfit_ambassador.html" style="font-size:.9rem;color:var(--mauve);font-weight:700;text-decoration:none;margin-left:6px;">웰핏 앰배서더 알아보기 →</a>
+    </div>
+  </div>
+</section>
+<section class="section price-section" id="price">
+  <div class="container">
+    <div class="eyebrow c reveal"><i class="fas fa-tags" style="font-size:11px;"></i>가격 비교</div>
+    <h2 class="stitle c reveal d1">병원 한 번 가는 비용으로<br>한 달 내내 관리하세요</h2>
+    <p class="slead c reveal d2">같은 수치, 훨씬 적은 비용 — 게다가 매일 모니터링까지</p>
+    <div class="price-grid">
+      <div class="price-card pc-hospital reveal d1">
+        <div class="pc-label">병원 호르몬·영양 검사</div>
+        <div class="pc-title">1회 검사 비용</div>
+        <div class="pi"><span class="pn">호르몬 패널 검사 (코르티솔·에스트로겐)</span><span class="pv">8~15만원</span></div>
+        <div class="pi"><span class="pn">영양 결핍 혈액검사 (비타민D·철분·아연)</span><span class="pv">5~10만원</span></div>
+        <div class="pi"><span class="pn">예약·대기·내원 시간</span><span class="pv">반나절 소요</span></div>
+        <div class="pi"><span class="pn">재측정 비용</span><span class="pv">매번 동일</span></div>
+        <div class="ptotal"><span class="tl">1회 합산</span><span class="ta">13~25만원</span></div>
+        <p class="pnote">* 비급여 기준, 병원마다 상이</p>
+      </div>
+      <div class="price-card pc-wellfit reveal d2">
+        <div class="wf-inner">
+          <div class="wf-badge">✦ 웰핏+ CHECK-UP</div>
+          <div class="pc-label">월 구독</div>
+          <div class="wf-price">59,800<span style="font-size:1.1rem;">원</span></div>
+          <div class="wf-price-sub">14일 29,900원 × 2회 · 언제든 해지 가능</div>
+          <ul class="wf-list">
+            <li><i class="fas fa-check"></i>호르몬 불균형 위험도 예측 (코르티솔·에스트로겐)</li>
+            <li><i class="fas fa-check"></i>비타민D·철분·아연 결핍 위험도</li>
+            <li><i class="fas fa-check"></i>AI 통합 건강 나이 산출</li>
+            <li><i class="fas fa-check"></i>15페이지 맞춤 PDF 리포트</li>
+            <li><i class="fas fa-check"></i>14일 식단·운동·영양제 플랜</li>
+            <li><i class="fas fa-check"></i>무제한 재측정 · 변화 추적</li>
+          </ul>
+          <a href="#cta" class="btn-w" style="width:100%;justify-content:center;"><i class="fas fa-gift"></i> 14일 무료로 시작하기</a>
+        </div>
+      </div>
+    </div>
+    <div class="price-verdict reveal d3">
+      <i class="fas fa-lightbulb"></i>
+      <div class="pv-text">
+        <h4>병원 1회 검사비의 절반 이하, 매달 모니터링까지</h4>
+        <p>병원에서 같은 항목을 한 번 검사하는 비용이 <strong>13~25만원</strong>인 반면, 웰핏+는 <strong>월 59,800원</strong>으로 매달 변화를 추적하고 맞춤 가이드까지 받습니다. 14일 무료 체험으로 먼저 경험해보세요.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST -->
+<section class="section" style="background:var(--white);">
+  <div class="container">
+    <div class="eyebrow c reveal"><i class="fas fa-shield-alt" style="font-size:11px;"></i>왜 믿을 수 있나요?</div>
+    <h2 class="stitle c reveal d1">기술이 증명합니다</h2>
+    <p class="slead c reveal d2">막연한 AI가 아닙니다.<br>특허 출원된 독자 기술로 당신의 몸을 분석합니다.</p>
+    <div class="trust-grid">
+      <div class="trust-card patent-card reveal d1">
+        <div class="tib tib-rose" style="width:52px;height:52px;border-radius:14px;"><i class="fas fa-award" style="font-size:1.4rem;"></i></div>
+        <div class="trust-body">
+          <h4>대한민국 특허 출원 완료</h4>
+          <p>웰핏+의 핵심 AI 분석 기술은 특허청에 정식 출원되었습니다. 혈액 채취 없이 얼굴·손톱 이미지와 설문을 AI로 융합 분석하는 방법은 기존에 없던 새로운 기술입니다.</p>
+          <div class="patent-name-pill">비침습적 바이오마커 추정을 통한 건강 상태 평가 장치 및 방법</div><br>
+          <span class="patent-pending"><i class="fas fa-clock"></i> 출원증명서 발급 예정 · 출원인: 김성훈</span>
+        </div>
+      </div>
+      <div class="trust-card reveal d2">
+        <div class="tib tib-mint"><i class="fab fa-microsoft"></i></div>
+        <div class="trust-body"><h4>Microsoft Azure AI 인프라</h4><p>세계 최대 클라우드 AI 플랫폼인 Microsoft Azure 위에서 구동됩니다. 기업 수준의 보안과 안정성이 보장됩니다.</p></div>
+      </div>
+      <div class="trust-card reveal d3">
+        <div class="tib tib-rose"><i class="fas fa-shield-alt"></i></div>
+        <div class="trust-body"><h4>촬영 즉시 데이터 삭제</h4><p>업로드된 얼굴·손톱 이미지는 AI 분석 완료 즉시 서버에서 영구 삭제됩니다. 어떤 이미지도 저장되거나 제3자에게 전달되지 않습니다.</p></div>
+      </div>
+      <div class="trust-card reveal d2">
+        <div class="tib tib-mauve"><i class="fas fa-book-medical"></i></div>
+        <div class="trust-body"><h4>임상 연구 데이터 기반 설계</h4><p>수치 해석 기준과 건강 나이 가중치는 공개된 임상 연구 논문 및 혈액검사 정답 레이블 데이터를 기반으로 설계되었습니다.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" id="faq" style="background:var(--bg);">
+  <div class="container" style="max-width:700px;">
+    <div class="eyebrow c reveal"><i class="fas fa-question-circle" style="font-size:11px;"></i>자주 묻는 질문</div>
+    <h2 class="stitle c reveal d1" style="margin-bottom:36px;">궁금한 점이 있으신가요?</h2>
+    <div class="reveal d2">
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">이 서비스는 의료 진단인가요? <i class="fas fa-chevron-down"></i></button><div class="faq-a"><div class="faq-a-inner">아닙니다. 웰핏+ CHECK-UP은 라이프스타일 코칭 및 건강 관리 참고 자료를 제공하는 서비스입니다. 의료 진단을 대체하지 않으며, 건강 이상이 의심되는 경우 반드시 의사와 상담하시기 바랍니다.</div></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">AI 분석은 얼마나 정확한가요? <i class="fas fa-chevron-down"></i></button><div class="faq-a"><div class="faq-a-inner">AI 분석은 실제 혈액검사 수치와의 상관관계를 기반으로 설계된 참고 지표입니다. 특허 출원된 멀티모달 융합 기술로 단일 이미지 분석 대비 정확도를 현저히 향상시켰으나, 정확한 진단은 의료기관을 통해 받으시길 권장합니다.</div></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">14일 후 자동으로 결제되나요? <i class="fas fa-chevron-down"></i></button><div class="faq-a"><div class="faq-a-inner">네, 무료 체험 14일 이후 29,900원이 자동 갱신됩니다. 언제든지 앱 내 설정에서 해지하실 수 있으며, 14일 무료 기간 중 해지하면 비용이 전혀 발생하지 않습니다.</div></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">셀카 사진은 어떻게 관리되나요? <i class="fas fa-chevron-down"></i></button><div class="faq-a"><div class="faq-a-inner">업로드된 사진은 AI 분석에만 사용되며, 분석 완료 즉시 서버에서 완전히 삭제됩니다. 얼굴 이미지는 저장되지 않으며 제3자에게 공유되지 않습니다. Microsoft Azure의 보안 인프라 위에서 처리됩니다.</div></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">추천 수익은 언제 지급되나요? <i class="fas fa-chevron-down"></i></button><div class="faq-a"><div class="faq-a-inner">매월 말 정산 후 익월 10일에 등록된 계좌로 입금됩니다. 추천인 코드 발급은 무료이며, 별도의 가입비나 유지 조건이 없습니다.</div></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">스마트폰만 있으면 되나요? <i class="fas fa-chevron-down"></i></button><div class="faq-a"><div class="faq-a-inner">네, 별도의 기기나 장비 없이 스마트폰만 있으면 됩니다. iOS와 Android 모두 지원하며, 카메라 해상도가 낮아도 AI가 최적화하여 분석합니다.</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="cta-section" id="cta">
+  <div class="cta-deco cd1"></div>
+  <div class="cta-deco cd2"></div>
+  <div class="cta-inner">
+    <span class="cta-eyebrow">Get Started</span>
+    <h2 class="stitle reveal">지금 바로<br>내 건강 나이를 확인하세요</h2>
+    <p class="slead reveal d1" style="margin-left:auto;margin-right:auto;">14일 무료 체험으로 시작하세요.<br>신용카드 정보도, 초기 비용도 필요 없어요.</p>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfxy701G6J_S1ZA_TeqOAwArbz04EPaeoBm8bidxhQBMaUgRQ/viewform?usp=header" class="btn-w reveal d2" target="_blank"><i class="fas fa-gift"></i> 무료 쿠폰 코드 받기</a>
+    <div class="cta-tags reveal d3">
+      <span class="cta-tag"><i class="fas fa-check" style="margin-right:4px;"></i>14일 무료</span>
+      <span class="cta-tag"><i class="fas fa-check" style="margin-right:4px;"></i>신용카드 불필요</span>
+      <span class="cta-tag"><i class="fas fa-check" style="margin-right:4px;"></i>언제든 해지 가능</span>
+      <span class="cta-tag"><i class="fas fa-check" style="margin-right:4px;"></i>얼리어답터 모집 중</span>
+    </div>
+    <p style="margin-top:24px;font-size:.82rem;color:rgba(255,255,255,.55);">건강 관리를 넘어 수익까지 만들고 싶다면 — <a href="wellfit_ambassador.html" style="color:rgba(255,255,255,.75);font-weight:600;text-decoration:none;">웰핏 앰배서더 프로그램 →</a></p>
+  </div>
+</section>
+<footer class="footer">
+  <div style="display:flex;justify-content:center;margin-bottom:14px;">
+    <svg width="152" height="36" viewBox="0 0 152 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="18" cy="18" r="18" fill="url(#lg2)"/>
+      <rect x="11" y="15.5" width="14" height="5" rx="2.5" fill="white"/>
+      <rect x="15.5" y="11" width="5" height="14" rx="2.5" fill="white"/>
+      <text x="44" y="24" font-family="Pretendard,sans-serif" font-size="18" font-weight="700" fill="rgba(255,255,255,0.7)" letter-spacing="-0.5">웰핏</text>
+      <text x="83" y="23" font-family="Pretendard,sans-serif" font-size="22" font-weight="800" fill="#D4A87C">+</text>
+      <rect x="99" y="7" width="1" height="22" rx="0.5" fill="rgba(255,255,255,0.2)"/>
+      <text x="107" y="19" font-family="Pretendard,sans-serif" font-size="8.5" font-weight="600" fill="rgba(255,255,255,0.4)" letter-spacing="1.8">CHECK</text>
+      <text x="107" y="30" font-family="Pretendard,sans-serif" font-size="8.5" font-weight="700" fill="#D4A87C" letter-spacing="2">-UP</text>
+      <defs><linearGradient id="lg2" x1="0" y1="0" x2="36" y2="36" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#C8956C"/><stop offset="100%" stop-color="#8B5E83"/></linearGradient></defs>
+    </svg>
+  </div>
+  <p>© 2026 웰핏+ CHECK-UP. 본 서비스는 의료 진단을 대체하지 않으며, 라이프스타일 코칭 및 건강 관리 가이드를 제공합니다.</p>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-ov" id="reportModal" onclick="if(event.target===this)closeModal()">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal()"><i class="fas fa-times"></i></button>
+    <h3 class="modal-title">웰핏+ CHECK-UP 리포트 샘플</h3>
+    <p class="modal-sub">이지은 님 (48세, 여성) · <span id="modalDate"></span> 분석</p>
+    <div class="modal-age-row">
+      <div class="ma-item"><div class="ma-lbl">실제 나이</div><div class="ma-num">48세</div></div>
+      <div class="ma-arr"><i class="fas fa-arrow-right"></i></div>
+      <div class="ma-item"><div class="ma-lbl">AI 건강 나이</div><div class="ma-num" style="color:var(--mint);">43세</div></div>
+      <div class="ma-badge" style="background:var(--mint-light);color:#2E7D32;border:1px solid #A5D6A7;">✅ -5세 개선</div>
+    </div>
+    <div class="modal-st">호르몬 밸런스</div>
+    <div class="modal-gauge"><div class="mg-meta"><span class="mg-name">코르티솔</span><span class="mg-val">과다 위험 38% · 정상 범위 내 예측 ✅</span></div><div class="mg-track"><div class="gfw" style="width:38%;height:100%;border-radius:10px;"></div></div></div>
+    <div class="modal-gauge"><div class="mg-meta"><span class="mg-name">에스트로겐</span><span class="mg-val">저하 위험 42% · 경계 범위 주의 관찰</span></div><div class="mg-track"><div class="gfw" style="width:42%;height:100%;border-radius:10px;"></div></div></div>
+    <div class="modal-st">영양 결핍 위험도</div>
+    <div class="modal-gauge"><div class="mg-meta"><span class="mg-name">비타민D 결핍 위험</span><span class="mg-val">31% — 보충 후 정상 범위 진입</span></div><div class="mg-track"><div class="gfw" style="width:31%;height:100%;border-radius:10px;"></div></div></div>
+    <div class="modal-gauge"><div class="mg-meta"><span class="mg-name">철분 결핍 위험</span><span class="mg-val">28% — 식단 개선 후 호전</span></div><div class="mg-track"><div class="gfw" style="width:28%;height:100%;border-radius:10px;"></div></div></div>
+    <div class="modal-st">14일 맞춤 가이드 (일부)</div>
+    <div class="modal-day"><strong>Day 1</strong><p>아침 공복 — 유산균 + 저분자 콜라겐 앰플 섭취<br>저녁 — 마그네슘·테아닌 스틱으로 숙면 유도</p></div>
+    <div class="modal-day"><strong>Day 7</strong><p>비타민D 2000IU 추가, 연어 샐러드 레시피 제공<br>코르티솔 안정화를 위한 복식 호흡 가이드 포함</p></div>
+    <div class="modal-day"><strong>Day 14</strong><p>중간 점검 자가 체크리스트 + 2주차 맞춤 플랜으로 전환<br>개인 맞춤 건강기능식품 최종 추천 리스트 제공</p></div>
+    <p class="modal-footnote"><i class="fas fa-lock" style="color:var(--rose);margin-right:5px;"></i>실제 리포트는 15페이지 분량의 개인 맞춤형 PDF로 제공됩니다.</p>
+  </div>
+</div>
+
+<!-- INCOME SCENARIO MODAL -->
+<div class="modal-ov" id="incomeModal" onclick="if(event.target===this)closeIncomeModal()">
+  <div class="modal-box income-modal-box">
+    <button class="modal-close" onclick="closeIncomeModal()"><i class="fas fa-times"></i></button>
+    <h3 class="modal-title">수익 시나리오 상세</h3>
+    <p class="modal-sub">직접 추천 수당 + 오버라이딩(판매자당 평균 고객 20명 기준)</p>
+    <div class="income-tabs">
+      <button class="itab active" onclick="switchTab(this,'tab-direct')"><i class="fas fa-user" style="margin-right:5px;"></i>직접 수익만</button>
+      <button class="itab" onclick="switchTab(this,'tab-total')"><i class="fas fa-layer-group" style="margin-right:5px;"></i>오버라이딩 포함</button>
+    </div>
+
+    <!-- 직접 수익만 -->
+    <div id="tab-direct">
+      <table class="scenario-table">
+        <tr>
+          <th>목표</th>
+          <th>직접 고객 수</th>
+          <th class="col-total">월 직접 수익</th>
+        </tr>
+        <tr>
+          <td><span class="goal-badge gb-coffee">☕ 커피값</span></td>
+          <td>1명</td>
+          <td class="col-total">14,950원</td>
+        </tr>
+        <tr>
+          <td><span class="goal-badge gb-free">🎁 내 구독료 공짜</span></td>
+          <td>2명</td>
+          <td class="col-total">29,900원</td>
+        </tr>
+        <tr>
+          <td><span class="goal-badge gb-pocket">💰 용돈 수준</span></td>
+          <td>5명</td>
+          <td class="col-total">74,750원</td>
+        </tr>
+        <tr>
+          <td><span class="goal-badge gb-side">📈 부업 수준</span></td>
+          <td>15명</td>
+          <td class="col-total">224,250원</td>
+        </tr>
+        <tr>
+          <td><span class="goal-badge gb-part">🚀 파트타임 대체</span></td>
+          <td>34명</td>
+          <td class="col-total">508,300원</td>
+        </tr>
+      </table>
+      <div class="income-note">
+        <strong>직접 추천 수당</strong> = 고객 수 × 14,950원 (구독료 59,800원/월의 25%)<br>
+        * 14일 단위 자동 갱신 × 월 2회 기준 · 제휴 커미션(7%) 별도
+      </div>
+    </div>
+
+    <!-- 오버라이딩 포함 -->
+    <div id="tab-total" style="display:none;">
+      <table class="scenario-table">
+        <tr>
+          <th>목표</th>
+          <th>직접 고객</th>
+          <th>모집 판매자</th>
+          <th>직접 수익</th>
+          <th>오버라이딩</th>
+          <th class="col-total">월 총 수익</th>
+        </tr>
+        <tr>
+          <td><span class="goal-badge gb-coffee">☕ 커피값</span></td>
+          <td>1명</td><td>0명</td>
+          <td>14,950원</td><td>0원</td>
+          <td class="col-total">14,950원</td>
+        </tr>
+        <tr>
+          <td><span class="goal-badge gb-free">🎁 구독료 공짜+</span></td>
+          <td>2명</td><td>1명</td>
+          <td>29,900원</td><td>59,800원</td>
+          <td class="col-total">89,700원</td>
+        </tr>
+        <tr>
+          <td><span class="goal-badge gb-pocket">💰 용돈 수준</span></td>
+          <td>5명</td><td>3명</td>
+          <td>74,750원</td><td>179,400원</td>
+          <td class="col-total">254,150원</td>
+        </tr>
+        <tr>
+          <td><span class="goal-badge gb-side">📈 부업 수준</span></td>
+          <td>15명</td><td>5명</td>
+          <td>224,250원</td><td>299,000원</td>
+          <td class="col-total">523,250원</td>
+        </tr>
+        <tr>
+          <td><span class="goal-badge gb-part">🚀 파트타임 대체</span></td>
+          <td>34명</td><td>10명</td>
+          <td>508,300원</td><td>598,000원</td>
+          <td class="col-total">1,106,300원</td>
+        </tr>
+      </table>
+      <div class="income-note">
+        <strong>오버라이딩</strong> = 내가 모집한 판매자 수 × 20명 × 2,990원 (판매자당 평균 고객 20명 기준)<br>
+        <strong>"구독료 공짜+" 단계</strong>: 2명 직접 추천 + 판매자 1명 모집만으로 월 89,700원 — 내 구독료가 0원이 돼요.<br>
+        * 14일 단위 자동 갱신 × 월 2회 기준 · 제휴 커미션(7%) 별도
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+// INCOME MODAL
+function openIncomeModal(){document.getElementById('incomeModal').classList.add('open');document.body.style.overflow='hidden'}
+function closeIncomeModal(){document.getElementById('incomeModal').classList.remove('open');document.body.style.overflow=''}
+function switchTab(btn, tabId){
+  document.querySelectorAll('.itab').forEach(t=>t.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('tab-direct').style.display='none';
+  document.getElementById('tab-total').style.display='none';
+  document.getElementById(tabId).style.display='block';
+}
+// 모달 날짜 자동 출력
+(function(){
+  const now = new Date();
+  const dateStr = now.getFullYear()+'년 '+(now.getMonth()+1)+'월 '+now.getDate()+'일';
+  const modal = document.getElementById('modalDate');
+  const preview = document.getElementById('previewDate');
+  if(modal) modal.textContent = dateStr;
+  if(preview) preview.textContent = dateStr;
+})();
+// 분석 배지 토글 애니메이션
+(function(){
+  const analyzing = document.getElementById('badge-analyzing');
+  const done = document.getElementById('badge-done');
+  const badge = document.getElementById('analysisBadge');
+  if(!analyzing||!done||!badge) return;
+  function showAnalyzing(){
+    done.style.display='none';
+    analyzing.style.display='flex';
+    badge.classList.add('badge-pulse');
+    setTimeout(()=>badge.classList.remove('badge-pulse'),400);
+    setTimeout(showDone, 2200);
+  }
+  function showDone(){
+    analyzing.style.display='none';
+    done.style.display='flex';
+    badge.classList.add('badge-pulse');
+    setTimeout(()=>badge.classList.remove('badge-pulse'),400);
+    setTimeout(showAnalyzing, 2800);
+  }
+  showAnalyzing();
+})();
+const ro = new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+// HEADER
+window.addEventListener('scroll',()=>{document.getElementById('hdr').classList.toggle('scrolled',window.scrollY>40)});
+// MODAL
+function openModal(){document.getElementById('reportModal').classList.add('open');document.body.style.overflow='hidden'}
+function closeModal(){document.getElementById('reportModal').classList.remove('open');document.body.style.overflow=''}
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeModal();closeIncomeModal();}});
+// CALC
+function calcIncome(){
+  const d=parseInt(document.getElementById('dr').value);
+  const p=parseInt(document.getElementById('pr').value);
+  const c=parseInt(document.getElementById('cr').value);
+  document.getElementById('dv').textContent=d+'명';
+  document.getElementById('pv').textContent=p+'명';
+  document.getElementById('cv').textContent=c+'명';
+  document.getElementById('totalIncome').textContent=Math.round((d*14950)+(p*c*14950*0.2)).toLocaleString()+'원';
+}
+calcIncome();
+// FAQ
+function toggleFaq(btn){
+  const a=btn.nextElementSibling;
+  const isOpen=btn.classList.contains('open');
+  document.querySelectorAll('.faq-q.open').forEach(b=>{b.classList.remove('open');b.nextElementSibling.classList.remove('open')});
+  if(!isOpen){btn.classList.add('open');a.classList.add('open')}
+}
+</script>
+</body>
+</html>
