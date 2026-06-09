@@ -279,6 +279,29 @@ body{font-family:var(--sans);background:var(--bg);color:var(--charcoal);line-hei
 @media(max-width:960px){.exclusive-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:520px){.exclusive-grid{grid-template-columns:1fr}}
 
+/* ══ PLAN COMPARE TABS ══ */
+.plan-tabs-section{background:var(--white)}
+.plan-tabs-wrap{display:flex;gap:8px;background:var(--gray-ultra);border-radius:14px;padding:5px;max-width:400px;margin:0 auto 36px}
+.ptab{flex:1;background:none;border:none;padding:11px 18px;border-radius:10px;font-family:var(--sans);font-size:.9rem;font-weight:600;color:var(--gray);cursor:pointer;transition:all .28s var(--ease);white-space:nowrap}
+.ptab.active{background:#fff;color:var(--rose-dark);box-shadow:var(--sh-sm)}
+.ptab.active.paid{background:linear-gradient(135deg,#C8956C,#8B5E83);color:#fff;box-shadow:0 4px 16px rgba(200,149,108,.32)}
+.plan-panel{display:none}
+.plan-panel.active{display:block}
+.plan-box{background:var(--gray-ultra);border-radius:var(--r);padding:32px 36px;max-width:560px;margin:0 auto;border:1px solid var(--gray-light)}
+.plan-box.paid-box{background:linear-gradient(160deg,#FBF5F0,#F5EDF8);border-color:rgba(200,149,108,.25)}
+.plan-price-tag{display:inline-flex;align-items:center;gap:8px;margin-bottom:24px}
+.ppt-label{font-size:.78rem;font-weight:700;color:var(--gray);letter-spacing:1px;text-transform:uppercase}
+.ppt-price{font-size:1.5rem;font-weight:900;color:var(--rose-dark)}
+.ppt-period{font-size:.82rem;color:var(--gray);font-weight:400}
+.plan-list{list-style:none;display:flex;flex-direction:column;gap:0}
+.plan-list li{display:flex;align-items:flex-start;gap:12px;padding:11px 0;border-bottom:1px solid rgba(0,0,0,.06);font-size:.93rem;color:var(--charcoal);line-height:1.5}
+.plan-list li:last-child{border-bottom:none}
+.plan-list .pli-yes{color:#22a96b;font-size:.95rem;flex-shrink:0;margin-top:1px}
+.plan-list .pli-no{color:#ccc;font-size:.95rem;flex-shrink:0;margin-top:1px}
+.plan-list .pli-text-muted{color:var(--gray)}
+.plan-cta-row{text-align:center;margin-top:26px}
+.plan-free-note{font-size:.8rem;color:var(--gray);margin-top:10px}
+
 /* ══ COMPARE TABLE ══ */
 .cmp-wrap{overflow-x:auto}
 .cmp-table{width:100%;border-collapse:collapse}
@@ -779,6 +802,67 @@ body{font-family:var(--sans);background:var(--bg);color:var(--charcoal);line-hei
   </div>
 </section>
 
+<!-- PLAN COMPARE TABS -->
+<section class="section plan-tabs-section">
+  <div class="container">
+    <div class="eyebrow c reveal"><i class="fas fa-exchange-alt" style="font-size:11px;"></i>플랜 비교</div>
+    <h2 class="stitle c reveal d1">무료와 유료,<br>무엇이 다를까요?</h2>
+    <p class="slead c reveal d2" style="margin-bottom:32px;">14일 무료로 먼저 경험하고, 구독으로 진짜 변화를 만들어보세요.</p>
+
+    <div class="plan-tabs-wrap reveal d2">
+      <button class="ptab" id="ptab-free" onclick="switchPlan('free')"><i class="fas fa-gift" style="margin-right:6px;"></i>무료 체험</button>
+      <button class="ptab active paid" id="ptab-paid" onclick="switchPlan('paid')"><i class="fas fa-crown" style="margin-right:6px;"></i>유료 구독</button>
+    </div>
+
+    <!-- 무료 체험 패널 -->
+    <div class="plan-panel" id="plan-free">
+      <div class="plan-box">
+        <div class="plan-price-tag">
+          <span class="ppt-label">무료 체험</span>
+          <span class="ppt-price">₩0</span>
+          <span class="ppt-period">/ 14일</span>
+        </div>
+        <ul class="plan-list">
+          <li><i class="fas fa-check-circle pli-yes"></i><span>1회 AI 분석</span></li>
+          <li><i class="fas fa-check-circle pli-yes"></i><span>본문 리포트 확인 (건강나이 · 호르몬 · 영양 · 14일 플랜)</span></li>
+          <li><i class="fas fa-check-circle pli-yes"></i><span>생성된 리포트 공유</span></li>
+          <li><i class="fas fa-check-circle pli-yes"></i><span>14일 이용</span></li>
+          <li><i class="fas fa-times-circle pli-no"></i><span class="pli-text-muted">월별 변화 그래프</span></li>
+          <li><i class="fas fa-times-circle pli-no"></i><span class="pli-text-muted">건강나이 챌린지</span></li>
+          <li><i class="fas fa-times-circle pli-no"></i><span class="pli-text-muted">3개월 예상 피부 미리보기</span></li>
+          <li><i class="fas fa-times-circle pli-no"></i><span class="pli-text-muted">앰배서더 수익</span></li>
+        </ul>
+        <div class="plan-cta-row">
+          <a href="#cta" class="btn-o" style="justify-content:center;width:100%;"><i class="fas fa-gift"></i> 14일 무료로 시작하기</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 유료 구독 패널 -->
+    <div class="plan-panel active" id="plan-paid">
+      <div class="plan-box paid-box">
+        <div class="plan-price-tag">
+          <span class="ppt-label">유료 구독</span>
+          <span class="ppt-price">₩59,800</span>
+          <span class="ppt-period">/ 월</span>
+        </div>
+        <ul class="plan-list">
+          <li><i class="fas fa-check-circle pli-yes"></i><span>월 4회 정기 분석 <span style="font-size:.8rem;color:var(--gray);">(주 1회 관리)</span></span></li>
+          <li><i class="fas fa-check-circle pli-yes"></i><span>📈 월별 변화 그래프</span></li>
+          <li><i class="fas fa-check-circle pli-yes"></i><span>🏆 건강나이 챌린지 <span style="font-size:.8rem;color:var(--gray);">(-3세 목표 + 인증서)</span></span></li>
+          <li><i class="fas fa-check-circle pli-yes"></i><span>✨ 3개월 예상 피부 미리보기</span></li>
+          <li><i class="fas fa-check-circle pli-yes"></i><span>💰 앰배서더 수익 <span style="font-size:.8rem;color:var(--gray);">(단 2명 추천 = 구독료 0원)</span></span></li>
+          <li><i class="fas fa-check-circle pli-yes"></i><span>무료 체험 모든 기능 포함</span></li>
+        </ul>
+        <div class="plan-cta-row">
+          <a href="#cta" class="btn-p" style="justify-content:center;width:100%;"><i class="fas fa-crown"></i> 유료 구독 시작하기</a>
+          <p class="plan-free-note">14일 무료 체험 후 자동 전환 · 언제든 해지 가능</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- TRUST -->
 <section class="section" style="background:var(--white);">
   <div class="container">
@@ -992,6 +1076,17 @@ body{font-family:var(--sans);background:var(--bg);color:var(--charcoal);line-hei
 </div>
 
 <script>
+// PLAN COMPARE TABS
+function switchPlan(tab){
+  document.getElementById('plan-free').classList.toggle('active', tab==='free');
+  document.getElementById('plan-paid').classList.toggle('active', tab==='paid');
+  const freeBtn=document.getElementById('ptab-free');
+  const paidBtn=document.getElementById('ptab-paid');
+  freeBtn.classList.toggle('active', tab==='free');
+  freeBtn.classList.remove('paid');
+  paidBtn.classList.toggle('active', tab==='paid');
+  if(tab==='paid') paidBtn.classList.add('paid'); else paidBtn.classList.remove('paid');
+}
 // INCOME MODAL
 function openIncomeModal(){document.getElementById('incomeModal').classList.add('open');document.body.style.overflow='hidden'}
 function closeIncomeModal(){document.getElementById('incomeModal').classList.remove('open');document.body.style.overflow=''}
