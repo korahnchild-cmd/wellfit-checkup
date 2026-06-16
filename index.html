@@ -750,7 +750,7 @@ body{font-family:var(--sans);background:var(--bg);color:var(--charcoal);line-hei
             <div class="age-badge" style="background:var(--mint-light);color:#2E7D32;">✅ -5세 개선</div>
           </div>
           <div class="gauge-b"><div class="gauge-m"><span class="gauge-mn">코르티솔</span><span class="gauge-mv">과다 위험 38%</span></div><div class="gauge-t"><div class="gfd" style="width:38%"></div></div></div>
-          <div class="gauge-b"><div class="gauge-m"><span class="gauge-mn">에스트로겐</span><span class="gauge-mv">32 pg/mL (정상 40~100)</span></div><div class="gauge-t"><div class="gfw" style="width:30%"></div></div></div>
+          <div class="gauge-b"><div class="gauge-m"><span class="gauge-mn">에스트로겐</span><span class="gauge-mv">저하 위험 30%</span></div><div class="gauge-t"><div class="gfw" style="width:30%"></div></div></div>
           <div class="gauge-b"><div class="gauge-m"><span class="gauge-mn">비타민D 결핍 위험</span><span class="gauge-mv">82%</span></div><div class="gauge-t"><div class="gfd" style="width:82%"></div></div></div>
           <div class="gauge-b"><div class="gauge-m"><span class="gauge-mn">철분 결핍 위험</span><span class="gauge-mv">47%</span></div><div class="gauge-t"><div class="gfw" style="width:47%"></div></div></div>
           <div class="rm-cta"><button class="btn-o" onclick="openModal()" style="font-size:.86rem;padding:11px 22px;"><i class="fas fa-search"></i> 전체 리포트 샘플 보기</button></div>
@@ -1041,7 +1041,7 @@ body{font-family:var(--sans);background:var(--bg);color:var(--charcoal);line-hei
     <div class="reveal d2">
       <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">이 서비스는 의료 진단인가요? <i class="fas fa-chevron-down"></i></button><div class="faq-a"><div class="faq-a-inner">아닙니다. 웰핏+ CHECK-UP은 라이프스타일 코칭 및 건강 관리 참고 자료를 제공하는 서비스입니다. 의료 진단을 대체하지 않으며, 건강 이상이 의심되는 경우 반드시 의사와 상담하시기 바랍니다.</div></div></div>
       <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">AI 분석은 얼마나 정확한가요? <i class="fas fa-chevron-down"></i></button><div class="faq-a"><div class="faq-a-inner">AI 분석은 실제 혈액검사 수치와의 상관관계를 기반으로 설계된 참고 지표입니다. 특허 출원된 멀티모달 융합 기술로 단일 이미지 분석 대비 정확도를 현저히 향상시켰으나, 정확한 진단은 의료기관을 통해 받으시길 권장합니다.</div></div></div>
-      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">14일 후 자동으로 결제되나요? <i class="fas fa-chevron-down"></i></button><div class="faq-a"><div class="faq-a-inner">14일 무료 체험 후 월 59,800원으로 전환됩니다. 언제든 해지 가능합니다.</div></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">14일 후 자동으로 결제되나요? <i class="fas fa-chevron-down"></i></button><div class="faq-a"><div class="faq-a-inner">14일 무료 체험 후 구독 여부를 직접 선택하시면 됩니다. 베타 기간 중에는 카카오페이 또는 계좌이체로 구독 신청이 가능하며, 언제든 해지 가능합니다.</div></div></div>
       <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">셀카 사진은 어떻게 관리되나요? <i class="fas fa-chevron-down"></i></button><div class="faq-a"><div class="faq-a-inner">업로드된 사진은 AI 분석에만 사용되며, 분석 완료 즉시 서버에서 완전히 삭제됩니다. 얼굴 이미지는 저장되지 않으며 제3자에게 공유되지 않습니다. Microsoft Azure의 보안 인프라 위에서 처리됩니다.</div></div></div>
       <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">추천 수익은 언제 지급되나요? <i class="fas fa-chevron-down"></i></button><div class="faq-a"><div class="faq-a-inner">매월 말 정산 후 익월 10일에 등록된 계좌로 입금됩니다. 추천인 코드 발급은 무료이며, 별도의 가입비나 유지 조건이 없습니다.</div></div></div>
       <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">스마트폰만 있으면 되나요? <i class="fas fa-chevron-down"></i></button><div class="faq-a"><div class="faq-a-inner">별도 앱 설치 없이 스마트폰 링크 하나로 바로 시작할 수 있어요. iOS·Android 모두 지원합니다.</div></div></div>
@@ -1204,7 +1204,8 @@ body{font-family:var(--sans);background:var(--bg);color:var(--charcoal);line-hei
       <div class="income-note">
         <strong>오버라이딩</strong> = 내 구독고객 수 × 파트너당 구독고객 수 × 2,990원<br>
         <strong>구독료 상쇄형</strong>: 구독고객 2명만 모집해도 내 월 구독료(59,800원)가 상쇄돼요.<br>
-        * 내 추천 링크로 가입한 구독고객은 자동으로 파트너 권한 부여 · 별도 신청 불필요
+        * 내 추천 링크로 가입한 구독고객은 자동으로 파트너 권한 부여 · 별도 신청 불필요<br>
+        * 위 시나리오는 예시이며, 실제 수익은 개인 활동에 따라 다를 수 있습니다.
       </div>
     </div>
 
