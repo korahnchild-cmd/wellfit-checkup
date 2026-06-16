@@ -680,6 +680,36 @@ body{font-family:var(--sans);background:var(--bg);color:var(--charcoal);line-hei
   </div>
 </section>
 
+
+<!-- 웹툰 토글 -->
+<div class="webtoon-toggle-sec">
+  <button class="webtoon-toggle-btn" id="webtoonBtn" onclick="toggleWebtoon()">
+    <div class="wtb-left">
+      <div class="wtb-icon">📖</div>
+      <div class="wtb-text">
+        <div class="wtb-title">웰핏+ 스토리 — 웹툰으로 보기</div>
+        <div class="wtb-sub">건강검진 결과를 받은 후, 어떻게 달라졌을까요? · 클릭해서 확인하세요</div>
+      </div>
+    </div>
+    <div class="wtb-arrow" id="webtoonArrow"><i class="fas fa-chevron-down"></i></div>
+  </button>
+  <div class="webtoon-body" id="webtoonBody">
+    <div class="webtoon-body-inner">
+      <div class="webtoon-img-wrap reveal">
+        <img src="webtoon_wfcu.png" alt="웰핏+ CHECK-UP 스토리 웹툰 — 건강검진 고민부터 AI 건강 분석까지" loading="lazy">
+      </div>
+      <div class="webtoon-footer">
+        <button class="wf-close-btn" onclick="toggleWebtoon()">
+          <i class="fas fa-chevron-up"></i> 접기
+        </button>
+        <a href="#cta" class="wf-close-btn" style="background:linear-gradient(135deg,#C8956C,#8B5E83);color:#fff;border-color:transparent;" onclick="toggleWebtoon()">
+          <i class="fas fa-gift"></i> 14일 무료 체험 시작하기
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- REPORT PREVIEW -->
 <section class="section report-section" id="report">
   <div class="container">
@@ -1263,6 +1293,20 @@ window.addEventListener('scroll',()=>{document.getElementById('hdr').classList.t
 function openModal(){document.getElementById('reportModal').classList.add('open');document.body.style.overflow='hidden'}
 function closeModal(){document.getElementById('reportModal').classList.remove('open');document.body.style.overflow=''}
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeModal();closeIncomeModal();}});
+
+// 웹툰 토글
+function toggleWebtoon(){
+  const btn = document.getElementById('webtoonBtn');
+  const body = document.getElementById('webtoonBody');
+  const arrow = document.getElementById('webtoonArrow');
+  const isOpen = body.classList.contains('open');
+  body.classList.toggle('open', !isOpen);
+  btn.classList.toggle('open', !isOpen);
+  if(!isOpen){
+    // 열릴 때 해당 위치로 부드럽게 스크롤
+    setTimeout(()=>btn.scrollIntoView({behavior:'smooth', block:'start'}), 100);
+  }
+}
 // CALC
 function calcIncome(){
   const drEl=document.getElementById('dr');
