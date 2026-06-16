@@ -260,7 +260,6 @@ input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.2)}
   .stitle{font-size:2.1rem}
   .hero-h1{font-size:2.4rem}
   .hero-in{gap:40px}
-  .nav{display:none}
   .hdr{padding:0 20px}
   .point-grid{grid-template-columns:1fr 1fr}
   .sc-grid{grid-template-columns:1fr}
@@ -270,6 +269,12 @@ input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.2)}
   .cta-title{font-size:2.2rem}
   .cta-sec{padding:80px 20px}
   .infograph{padding:28px 20px}
+}
+/* 모바일 헤더 — nav + btn-back 숨기고 로고 + 무료체험만 */
+@media(max-width:1024px){
+  .nav{display:none}
+  .btn-back{display:none}
+  .hdr-in{justify-content:space-between}
 }
 
 /* ── 특허 카드 (파트너 히어로용) ── */
