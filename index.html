@@ -441,6 +441,32 @@ body{font-family:var(--sans);background:var(--bg);color:var(--charcoal);line-hei
 .rp-title{font-size:.95rem;font-weight:700;color:var(--charcoal);margin-bottom:5px}
 .rp-sub{font-size:.78rem;color:var(--gray);line-height:1.6}
 @media(max-width:680px){.rev-points{grid-template-columns:1fr 1fr}}
+
+/* ── 웹툰 토글 ── */
+.webtoon-toggle-sec{background:var(--white);padding:0}
+.webtoon-toggle-btn{width:100%;display:flex;align-items:center;justify-content:space-between;padding:22px 32px;background:var(--white);border:none;border-top:1px solid rgba(200,149,108,.15);border-bottom:1px solid rgba(200,149,108,.15);cursor:pointer;font-family:var(--sans);transition:background .25s}
+.webtoon-toggle-btn:hover{background:rgba(200,149,108,.04)}
+.wtb-left{display:flex;align-items:center;gap:14px}
+.wtb-icon{width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,rgba(200,149,108,.15),rgba(139,94,131,.12));display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+.wtb-text{text-align:left}
+.wtb-title{font-size:.95rem;font-weight:700;color:var(--charcoal);letter-spacing:-.3px}
+.wtb-sub{font-size:.76rem;color:var(--gray);margin-top:2px}
+.wtb-arrow{width:32px;height:32px;border-radius:50%;background:rgba(200,149,108,.1);display:flex;align-items:center;justify-content:center;color:var(--rose);font-size:.85rem;transition:transform .35s,background .25s;flex-shrink:0}
+.wtb-arrow.open{transform:rotate(180deg);background:rgba(200,149,108,.18)}
+.webtoon-body{display:none}
+.webtoon-body.open{display:block}
+.webtoon-body-inner{padding:24px 32px 32px;text-align:center}
+.webtoon-img-wrap{max-width:680px;margin:0 auto;border-radius:16px;overflow:hidden;box-shadow:0 12px 48px rgba(0,0,0,.10);border:1px solid rgba(200,149,108,.15)}
+.webtoon-img-wrap img{width:100%;display:block;margin:0 auto}
+.webtoon-footer{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:20px;padding-top:16px;border-top:1px solid rgba(200,149,108,.1);flex-wrap:wrap}
+.wf-close-btn{display:inline-flex;align-items:center;gap:6px;background:none;border:1.5px solid rgba(200,149,108,.3);border-radius:50px;padding:8px 20px;color:var(--rose);font-size:.82rem;font-weight:600;cursor:pointer;font-family:var(--sans);transition:all .2s;text-decoration:none}
+.wf-close-btn:hover{background:rgba(200,149,108,.08);border-color:var(--rose)}
+@media(max-width:680px){
+  .webtoon-toggle-btn{padding:18px 20px}
+  .webtoon-body-inner{padding:16px 16px 24px}
+  .wtb-sub{display:none}
+  .webtoon-footer{flex-direction:column;gap:8px}
+}
 </style>
 </head>
 <body>
@@ -681,34 +707,21 @@ body{font-family:var(--sans);background:var(--bg);color:var(--charcoal);line-hei
 </section>
 
 
-<!-- 웹툰 토글 -->
-<div class="webtoon-toggle-sec">
-  <button class="webtoon-toggle-btn" id="webtoonBtn" onclick="toggleWebtoon()">
-    <div class="wtb-left">
-      <div class="wtb-icon">📖</div>
-      <div class="wtb-text">
-        <div class="wtb-title">웰핏+ 스토리 — 웹툰으로 보기</div>
-        <div class="wtb-sub">건강검진 결과를 받은 후, 어떻게 달라졌을까요? · 클릭해서 확인하세요</div>
-      </div>
+<!-- 웹툰 섹션 -->
+<section class="section" style="background:var(--white);padding:60px 0;">
+  <div class="container">
+    <div class="eyebrow c reveal">📖 웰핏+ 스토리</div>
+    <h2 class="stitle c reveal d1">건강검진 결과를 받은 후,<br>어떻게 달라졌을까요?</h2>
+    <div class="reveal d2" style="max-width:1024px;margin:32px auto 0;border-radius:16px;overflow:hidden;box-shadow:0 12px 48px rgba(0,0,0,.10);border:1px solid rgba(200,149,108,.15);">
+      <img src="webtoon_wfcu.png" alt="웰핏+ CHECK-UP 스토리 웹툰 — 건강검진 고민부터 AI 건강 분석까지" loading="lazy" style="width:100%;display:block;">
     </div>
-    <div class="wtb-arrow" id="webtoonArrow"><i class="fas fa-chevron-down"></i></div>
-  </button>
-  <div class="webtoon-body" id="webtoonBody">
-    <div class="webtoon-body-inner">
-      <div class="webtoon-img-wrap reveal">
-        <img src="webtoon_wfcu.png" alt="웰핏+ CHECK-UP 스토리 웹툰 — 건강검진 고민부터 AI 건강 분석까지" loading="lazy">
-      </div>
-      <div class="webtoon-footer">
-        <button class="wf-close-btn" onclick="toggleWebtoon()">
-          <i class="fas fa-chevron-up"></i> 접기
-        </button>
-        <a href="#cta" class="wf-close-btn" style="background:linear-gradient(135deg,#C8956C,#8B5E83);color:#fff;border-color:transparent;" onclick="toggleWebtoon()">
-          <i class="fas fa-gift"></i> 14일 무료 체험 시작하기
-        </a>
-      </div>
+    <div class="reveal d3" style="text-align:center;margin-top:28px;">
+      <a href="#cta" style="display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#C8956C,#8B5E83);color:#fff;padding:14px 32px;border-radius:50px;font-size:.95rem;font-weight:700;text-decoration:none;box-shadow:0 6px 20px rgba(200,149,108,.3);">
+        <i class="fas fa-gift"></i> 14일 무료 체험 시작하기
+      </a>
     </div>
   </div>
-</div>
+</section>
 
 <!-- REPORT PREVIEW -->
 <section class="section report-section" id="report">
@@ -1300,11 +1313,15 @@ function toggleWebtoon(){
   const body = document.getElementById('webtoonBody');
   const arrow = document.getElementById('webtoonArrow');
   const isOpen = body.classList.contains('open');
-  body.classList.toggle('open', !isOpen);
-  btn.classList.toggle('open', !isOpen);
-  if(!isOpen){
-    // 열릴 때 해당 위치로 부드럽게 스크롤
-    setTimeout(()=>btn.scrollIntoView({behavior:'smooth', block:'start'}), 100);
+  if(isOpen){
+    body.classList.remove('open');
+    arrow.classList.remove('open');
+    btn.style.borderBottom = '1px solid rgba(200,149,108,.15)';
+  } else {
+    body.classList.add('open');
+    arrow.classList.add('open');
+    btn.style.borderBottom = 'none';
+    setTimeout(()=>btn.scrollIntoView({behavior:'smooth', block:'start'}), 50);
   }
 }
 // CALC
